@@ -8,9 +8,12 @@ pipeline {
   stages {
     stage('say hello') {
       steps {
-        echo 'Hello, world!'
+        echo "Hello ${MY_NAME}"
         sh 'go version'
       }
     }
+  }
+  environment {
+    MY_NAME = 'Mario'
   }
 }
