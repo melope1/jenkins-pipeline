@@ -1,19 +1,16 @@
 pipeline {
-  agent {
-    docker {
-      image 'golang:1.10.1-alpine'
-    }
-    
-  }
+  agent any
   stages {
     stage('say hello') {
       steps {
         echo "Hello ${MY_NAME}"
-        sh 'go version'
+        echo "${TEST_USER_USR}"
+        echo "${TEST_USER_PSW}"
       }
     }
   }
   environment {
     MY_NAME = 'Mario'
+    TEST_USER = credentials('test-user')
   }
 }
